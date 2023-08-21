@@ -180,3 +180,15 @@ a {
         padding-left: calc(var(--nav-width) + 188px)
     }
 }
+
+.divcenter {
+    text-align: center;
+}
+
+.btn-submit {
+    margin: 40px;
+}
+
+.txtarea {
+    height: 150px;
+}
