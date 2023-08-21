@@ -3,6 +3,20 @@ const app = express();
 const port = 3000;
 app.use(express.static("../client"));
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const UserModel = require("./models/User");
+
+mongoose
+  .connect("mongodb://127.0.0.1:27017/bookstore", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((error) => {
+    console.error("Error connecting to MongoDB:", error);
+  });
 
 app.use(bodyParser.json());
 
@@ -14,7 +28,13 @@ app.get("/api/data", (req, res) => {
 
 app.post("/api/signup", async (req, res) => {
   const { password, phone, email, name } = req.body;
-  console.log(res.body);
+  const newUser = new UserModel({
+    name: name,
+    email: email,
+    phone: phone,
+    password: password,
+  });
+  newUser.save();
   res.send(JSON.stringify(req.body));
 });
 
