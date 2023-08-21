@@ -32,57 +32,73 @@
             <div class="card shadow-2-strong" style="border-radius: 1rem">
               <div class="card-body px-5 py-2 text-center">
                 <h4 class="mb-1 m-0">Sign Up</h4>
-                <div class="form-outline mb-1 m-0">
-                  <input
-                    type="text"
-                    id="typeName"
-                    class="form-control form-control-lg m-0"
-                  />
-                  <label class="form-label" for="typeName">Name</label>
-                </div>
+                <form action="" id="signupForm">
+                  <div class="form-outline mb-1 m-0">
+                    <label class="form-label" for="typeName">Name</label>
+                    <input
+                      type="text"
+                      id="typeName"
+                      class="form-control form-control-lg m-0"
+                      name="name"
+                      required
+                    />
+                  </div>
 
-                <div class="form-outline mb-1 m-0">
-                  <input
-                    type="tel"
-                    id="typePhoneNumber"
-                    class="form-control form-control-lg m-0"
-                  />
-                  <label class="form-label" for="typePhoneNumber"
-                    >Phone Number</label
+                  <div class="form-outline mb-1 m-0">
+                    <label class="form-label" for="typePhoneNumber"
+                      >Phone Number</label
+                    >
+                    <input
+                      type="tel"
+                      id="typePhoneNumber"
+                      class="form-control form-control-lg m-0"
+                      name="tel"
+                    />
+                  </div>
+
+                  <div class="form-outline mb-1 m-0">
+                    <label class="form-label" for="typeEmail">Email</label>
+                    <input
+                      type="email"
+                      id="typeEmail"
+                      class="form-control form-control-lg m-0"
+                      name="email"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-outline mb-1">
+                    <label class="form-label" for="typePassword"
+                      >Password</label
+                    >
+                    <input
+                      type="password"
+                      id="typePassword"
+                      class="form-control form-control-lg"
+                      name="password1"
+                      required
+                    />
+                  </div>
+                  <div class="form-outline mb-1">
+                    <label class="form-label" for="typePassword"
+                      >confirm password</label
+                    >
+                    <input
+                      type="password"
+                      id="typePassword2"
+                      class="form-control form-control-lg"
+                      name="password2"
+                      required
+                    />
+                  </div>
+
+                  <button
+                    class="btn btn-primary btn-md btn-block"
+                    type="submit"
                   >
-                </div>
-
-                <div class="form-outline mb-1 m-0">
-                  <input
-                    type="email"
-                    id="typeEmail"
-                    class="form-control form-control-lg m-0"
-                  />
-                  <label class="form-label" for="typeEmail">Email</label>
-                </div>
-
-                <div class="form-outline mb-1">
-                  <input
-                    type="password"
-                    id="typePassword"
-                    class="form-control form-control-lg"
-                  />
-                  <label class="form-label" for="typePassword">Password</label>
-                </div>
-                <div class="form-outline mb-1">
-                  <input
-                    type="password"
-                    id="typePassword"
-                    class="form-control form-control-lg"
-                  />
-                  <label class="form-label" for="typePassword"
-                    >confirm password</label
-                  >
-                </div>
-
-                <button class="btn btn-primary btn-md btn-block" type="submit">
-                  Sign Up
-                </button>
+                    Sign Up
+                  </button>
+                </form>
               </div>
               <div class="p-1">
                 <a
@@ -96,6 +112,7 @@
         </div>
       </div>
     </section>
+    <script src="signup.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
