@@ -1,10 +1,14 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
+app.use(cors());
 const port = 3000;
 app.use(express.static("../client"));
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const UserModel = require("./models/User");
+
+const managerRouter = require("./routes/manage.js");
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/bookstore", {
@@ -19,6 +23,8 @@ mongoose
   });
 
 app.use(bodyParser.json());
+
+app.use("/manage", managerRouter);
 
 const mockData = { message: "Hello from the server!" };
 app.get("/api/data", (req, res) => {
