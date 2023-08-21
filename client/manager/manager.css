@@ -192,3 +192,9 @@ a {
 .txtarea {
     height: 150px;
 }
+
+.container-add {
+    margin: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
