@@ -73,35 +73,37 @@ function getBookComp() {
     return `
         <div class="height-100 bg-light">
             <h4>Add Book</h4>
-            <form>
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Book Title</label>
-                    <input type="text" class="form-control" name="title" placeholder="Book Title">
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Author</label>
-                    <input type="text" class="form-control" name="author" placeholder="Author">
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Publication</label>
-                    <input type="text" class="form-control" name="pub" placeholder="Publication">
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">MRP</label>
-                    <input type="number" class="form-control" name="mrp" placeholder="MRP">
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Price</label>
-                    <input type="number" class="form-control" name="price" placeholder="Price">
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Quantity</label>
-                    <input type="number" class="form-control" name="quantity" placeholder="Quantity">
-                </div>
-                <div class="form-group divcenter">
-                    <input class="btn btn-primary btn-submit" type="submit" value="Submit">
-                </div>
-            </form>
+            <div class="container-add">
+                <form>
+                    <div class="form-group">
+                        <label for="title">Book Title</label>
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Book Title">
+                    </div>
+                    <div class="form-group">
+                        <label for="author">Author</label>
+                        <input type="text" class="form-control" name="author" id="author" placeholder="Author">
+                    </div>
+                    <div class="form-group">
+                        <label for="pub">Publication</label>
+                        <input type="text" class="form-control" name="pub" id="pub" placeholder="Publication">
+                    </div>
+                    <div class="form-group">
+                        <label for="mrp">MRP</label>
+                        <input type="number" class="form-control" name="mrp" id="mrp" placeholder="MRP">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="number" class="form-control" name="price" id="price" placeholder="Price">
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Quantity">
+                    </div>
+                    <div class="form-group divcenter">
+                        <input class="btn btn-primary btn-submit" type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
         </div>
     `;
 }
@@ -110,31 +112,33 @@ function getStaffComp() {
     return `
         <div class="height-100 bg-light">
             <h4>Add Staff</h4>
-            <form>
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Name">
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Email</label>
-                    <input type="text" class="form-control" name="email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Phone Number</label>
-                    <input type="number" class="form-control" name="phone" placeholder="Phone Number">
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Password</label>
-                    <input type="password" class="form-control" name="passeord" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Address</label>
-                    <textarea type="text" class="form-control txtarea" name="address" placeholder="Address"></textarea>
-                </div>
-                <div class="form-group divcenter">
-                    <input class="btn btn-primary btn-submit" type="submit" value="Submit">
-                </div>
-            </form>
+            <div class="container-add">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" name="email" id="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="number" class="form-control" name="phone" id="phone" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea type="text" class="form-control txtarea" name="address" id="address" placeholder="Address"></textarea>
+                    </div>
+                    <div class="form-group divcenter">
+                        <input class="btn btn-primary btn-submit" type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
         </div>
     `;
 }
