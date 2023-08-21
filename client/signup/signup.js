@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
-
+      
     const name = form.querySelector("#typeName").value;
     const phonenumber = form.querySelector("#typePhoneNumber").value;
     const email = form.querySelector("#typeEmail").value;
@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
         phone: phonenumber,
         password: hashedPassword,
       };
-      console.log(formData);
       await fetch("http://localhost:3000/api/signup", {
         method: "POST",
         headers: {

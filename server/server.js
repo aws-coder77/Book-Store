@@ -26,6 +26,37 @@ app.get("/api/data", (req, res) => {
   res.json(data);
 });
 
+app.post("/api/login", async (req, res) => {
+  console.log(req.body);
+  const { email, password } = req.body;
+  try {
+    const user = await UserModel.findOne({ email });
+
+    if (!user) {
+      return res
+        .status(401)
+        .json({ message: "Authentication failed: Invalid email or password." });
+    }
+
+    if (password == user.password) {
+      // console.log(req.body);
+      return res
+        .status(200)
+        .json({ message: "Authentication successful", user });
+    } else {
+      // console.log(req.body);
+      return res
+        .status(401)
+        .json({ message: "Authentication failed: Invalid email or password." });
+    }
+  } catch (error) {
+    console.error("Error during authentication:", error);
+    res.status(500).json({ message: "An error occurred" });
+  }
+
+  res.send(JSON.stringify(req.body));
+});
+
 app.post("/api/signup", async (req, res) => {
   const { password, phone, email, name } = req.body;
   const newUser = new UserModel({
@@ -34,7 +65,12 @@ app.post("/api/signup", async (req, res) => {
     phone: phone,
     password: password,
   });
-  newUser.save();
+  try {
+    const savedUser = await newUser.save();
+    console.log("User saved:", savedUser);
+  } catch (error) {
+    console.error("Error saving user:", error);
+  }
   res.send(JSON.stringify(req.body));
 });
 

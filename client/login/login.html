@@ -18,43 +18,49 @@
             <div class="card shadow-2-strong" style="border-radius: 1rem">
               <div class="card-body px-5 py-3 text-center">
                 <h3 class="mb-3 m-0">Login</h3>
-                <div class="form-outline mb-3 m-0">
-                  <label class="form-label" for="typeEmailX-2">Email</label>
-                  <input
-                    type="email"
-                    id="typeEmailX-2"
-                    class="form-control form-control-lg m-0"
-                  />
-                </div>
+                <form action="" id="loginform">
+                  <div class="form-outline mb-3 m-0">
+                    <label class="form-label" for="typeEmailX-2">Email</label>
+                    <input
+                      type="email"
+                      id="typeEmail"
+                      class="form-control form-control-lg m-0"
+                    />
+                  </div>
 
-                <div class="form-outline mb-3">
-                  <label class="form-label" for="typePasswordX-2"
-                    >Password</label
+                  <div class="form-outline mb-3">
+                    <label class="form-label" for="typePasswordX-2"
+                      >Password</label
+                    >
+                    <input
+                      type="password"
+                      id="typePassword"
+                      class="form-control form-control-lg"
+                    />
+                  </div>
+
+                  <!-- Checkbox -->
+                  <div class="form-check d-flex justify-content-start mb-3">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="form1Example3"
+                    />
+                    <label class="form-check-label" for="form1Example3"
+                      >Remember password</label
+                    >
+                  </div>
+
+                  <button
+                    class="btn btn-primary btn-lg btn-block"
+                    type="submit"
                   >
-                  <input
-                    type="password"
-                    id="typePasswordX-2"
-                    class="form-control form-control-lg"
-                  />
-                </div>
-
-                <!-- Checkbox -->
-                <div class="form-check d-flex justify-content-start mb-3">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="form1Example3"
-                  />
-                  <label class="form-check-label" for="form1Example3"
-                    >Remember password</label
-                  >
-                </div>
-
-                <button class="btn btn-primary btn-lg btn-block" type="submit">
-                  login
-                </button>
+                    login
+                  </button>
+                </form>
               </div>
+
               <div class="p-2">
                 <a
                   href="../signup/signup.html"
@@ -67,6 +73,7 @@
         </div>
       </div>
     </section>
+    <script src="login.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
