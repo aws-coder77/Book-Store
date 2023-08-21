@@ -74,7 +74,7 @@ function getBookComp() {
         <div class="height-100 bg-light">
             <h4>Add Book</h4>
             <div class="container-add">
-                <form>
+                <form id="addbookform">
                     <div class="form-group">
                         <label for="title">Book Title</label>
                         <input type="text" class="form-control" name="title" id="title" placeholder="Book Title">
@@ -100,7 +100,7 @@ function getBookComp() {
                         <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Quantity">
                     </div>
                     <div class="form-group divcenter">
-                        <input class="btn btn-primary btn-submit" type="submit" value="Submit">
+                        <input class="btn btn-primary btn-submit" onclick="postBook()" value="Submit">
                     </div>
                 </form>
             </div>
@@ -169,3 +169,36 @@ statsDiv.addEventListener("click", function (event) {
     contentDiv.innerHTML = getStatsComp();
     drawChart();
 });
+
+function postBook() {
+    const form = document.getElementById("addbookform");
+    const title = form.querySelector("#title").value;
+    const author = form.querySelector("#author").value;
+    const publisher = form.querySelector("#pub").value;
+    const mrp = form.querySelector("#mrp").value;
+    const price = form.querySelector("#price").value;
+    const quantity = form.querySelector("#quantity").value;
+    const data = {
+        title: title,
+        author: author,
+        publisher: publisher,
+        mrp: mrp,
+        price: price,
+        quantity: quantity
+    };
+
+    fetch('http://localhost:3000/manage/addbook', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log(result);
+    })
+    .catch(error => {
+        console.error(error);
+    });
+}
