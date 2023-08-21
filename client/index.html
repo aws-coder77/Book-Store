@@ -1,22 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home page</title>
+    <link rel="stylesheet" href="index.css" />
+
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-      crossorigin="anonymous"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
   </head>
   <body>
-    <h1>Hello Everyone</h1>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-      crossorigin="anonymous"
-    ></script>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Home page</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <form class="form-inline my-2 my-lg-0">
+              <input
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
+                Search
+              </button>
+            </form>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./login/login.html">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./signup/signup.html">Sign Up</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3 card-img-top" cla>
+          <div class="card mx-1 my-2 p-1 bg-light">
+            <img src="jeeBook.jpeg" alt="Card image cap" class="card-body" />
+            <div class="card-body">
+              <p class="m-0">Book Name</p>
+              <p class="m-0">Price</p>
+              <p class="m-0">Publication Year</p>
+              <p class="m-0">Author Name</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 card-img-top">
+          <div class="card mx-1 my-2 p-1 bg-light">
+            <img src="jeeBook.jpeg" alt="Card image cap" class="card-body" />
+            <div class="card-body">
+              <p class="m-0">Book Name</p>
+              <p class="m-0">Price</p>
+              <p class="m-0">Publication Year</p>
+              <p class="m-0">Author Name</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 card-img-top">
+          <div class="card mx-1 my-2 p-1 bg-light">
+            <img src="jeeBook.jpeg" alt="Card image cap" class="card-body" />
+            <div class="card-body">
+              <p class="m-0">Book Name</p>
+              <p class="m-0">Price</p>
+              <p class="m-0">Publication Year</p>
+              <p class="m-0">Author Name</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 card-img-top">
+          <div class="card mx-1 my-2 p-1 bg-light">
+            <img src="jeeBook.jpeg" alt="Card image cap" class="card-body" />
+            <div class="card-body">
+              <p class="m-0">Book Name</p>
+              <p class="m-0">Price</p>
+              <p class="m-0">Publication Year</p>
+              <p class="m-0">Author Name</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 card-img-top">
+          <div class="card mx-1 my-2 p-1 bg-light">
+            <img src="jeeBook.jpeg" alt="Card image cap" class="card-body" />
+            <div class="card-body">
+              <p class="m-0">Book Name</p>
+              <p class="m-0">Price</p>
+              <p class="m-0">Publication Year</p>
+              <p class="m-0">Author Name</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 card-img-top">
+          <div class="card mx-1 my-2 p-1 bg-light">
+            <img src="jeeBook.jpeg" alt="Card image cap" class="card-body" />
+            <div class="card-body">
+              <p class="m-0">Book Name</p>
+              <p class="m-0">Price</p>
+              <p class="m-0">Publication Year</p>
+              <p class="m-0">Author Name</p>
+            </div>
+          </div>
+        </div>
+        <!-- Repeat the above structure for other cards -->
+      </div>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-dark">
+      <div class="container d-flex justify-content-between">
+        <span class="text-muted">about</span>
+        <span class="text-muted">feecbook</span>
+        <span class="text-muted">Instagram</span>
+        <span class="text-muted">Twitter</span>
+      </div>
+    </footer>
+    <!-- Bootstrap JS -->
+    <script src="index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>
