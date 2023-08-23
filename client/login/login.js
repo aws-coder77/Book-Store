@@ -28,7 +28,11 @@ document.addEventListener("DOMContentLoaded", function () {
     })
       .then((response) => response.json())
       .then((data) => {
+        setCookie("token", data.token);
+        setCookie("userID", data.userID);
         console.log("Response from server:", data);
+        if (data.token) window.location.href = "../index.html";
+        else alert("Wrong Email or Password");
       })
       .catch((error) => {
         console.error("Error sending data to server:", error);

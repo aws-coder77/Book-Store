@@ -1,5 +1,6 @@
 const express = require("express");
 const BookModel = require("../models/Book");
+const verifyToken = require("../middleware/auth.js");
 
 const router = express.Router();
 
@@ -7,7 +8,7 @@ router.get("/", (req, res) => {
     res.send("Hello World!!!");
 });
 
-router.post("/addbook", async (req, res) => {
+router.post("/addbook", verifyToken, async (req, res) => {
     const { title, author, publisher, mrp, price, quantity } = req.body;
     const book = await BookModel.findOne({title});
 
