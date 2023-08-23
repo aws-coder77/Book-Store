@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         phone: phonenumber,
         password: hashedPassword,
       };
-      await fetch("http://localhost:3000/api/signup", {
+      await fetch("/api/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
