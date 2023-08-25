@@ -27,6 +27,7 @@ app.use(bodyParser.json());
 
 app.use("/manage", managerRouter);
 app.use("/api", authRouter);
+app.use('/images', express.static('images'));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
