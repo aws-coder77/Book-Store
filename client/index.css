@@ -91,3 +91,63 @@
   color: #999;
   font-size: 12px;
 }
+
+/* Improve styling for the card */
+.card {
+  border: none; /* Remove the border */
+  border-radius: 8px; /* Add border radius */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle box shadow */
+  transition: transform 0.3s ease-in-out; /* Add smooth transform transition */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Add a slight lift effect on hover */
+}
+
+/* Style the image */
+.card-img-top img {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* Align the card content */
+.card-body {
+  padding: 10px;
+}
+
+/* Style the book information */
+.card-body p {
+  margin: 5px 0;
+}
+
+/* Ensure consistent font size and weight */
+.card-body p {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* Style the author's name to stand out */
+.card-body p:last-child {
+  font-weight: 600;
+}
+
+/* Adjust the margins for different screen sizes */
+@media (max-width: 576px) {
+  .col-sm-6 {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .col-md-4 {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .col-lg-3 {
+    margin-bottom: 20px;
+  }
+}

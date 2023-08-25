@@ -54,7 +54,7 @@ document.addEventListener("click", (event) => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const cardImgTops = document.querySelectorAll(".card-img-top");
 
   cardImgTops.forEach((cardImgTop) => {
@@ -91,4 +91,18 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error: ", error);
     }
   });
+  // await fetch("/listbook", {
+  //   method: "GET",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // })
+  //   .then((response) => response.json())
+  //   .then((books) => {
+  //     // suggestions = books.map((suggestion) => suggestion.title);
+  //     console.log(books);
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error:", error);
+  //   });
 });
