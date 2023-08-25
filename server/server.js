@@ -8,6 +8,7 @@ app.use(express.static(path.join(__dirname, "../client")));
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
+
 const managerRouter = require("./routes/manage.js");
 const authRouter = require("./routes/auth.js");
 const searchRouter = require("./routes/search.js");
