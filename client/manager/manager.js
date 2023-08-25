@@ -87,7 +87,7 @@ function getBookComp() {
                     </div>
                     <div class="form-group">
                         <label for="pub">Publication</label>
-                        <input type="text" class="form-control" name="pub" id="pub" placeholder="Publication">
+                        <input type="text" class="form-control" name="publisher" id="publisher" placeholder="Publication">
                     </div>
                     <div class="form-group">
                         <label for="mrp">MRP</label>
