@@ -8,6 +8,7 @@ app.use(express.static(path.join(__dirname, "../client")));
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
+
 const managerRouter = require("./routes/manage.js");
 const authRouter = require("./routes/auth.js");
 const searchRouter = require("./routes/search.js");
@@ -28,6 +29,7 @@ app.use(bodyParser.json());
 app.use("/manage", managerRouter);
 app.use("/api", authRouter);
 app.use("/search", searchRouter);
+app.use('/images', express.static('images'));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

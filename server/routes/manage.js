@@ -1,8 +1,18 @@
 const express = require("express");
+const path = require("path");
+const generateString = require("../utils/randomString.js");
 const BookModel = require("../models/Book");
 const multer = require("multer");
 
-const storage = multer.memoryStorage(); // Store the image in memory as Buffer
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, '..', 'images')); // Destination directory
+  },
+  filename: (req, file, cb) => {
+    // Use the current timestamp as a unique filename
+    cb(null, Date.now() + generateString() + path.extname(file.originalname));
+  },
+});
 const upload = multer({ storage: storage });
 const router = express.Router();
 
@@ -12,10 +22,7 @@ router.get("/", (req, res) => {
 
 router.post("/addbook", upload.single("image"), async (req, res) => {
   const { title, author, publisher, mrp, price, quantity } = req.body;
-  const image = {
-    data: req.file.buffer,
-    contentType: req.file.mimetype,
-  };
+  const imagename = req.file.filename;
   const book = await BookModel.findOne({ title });
 
   if (book) {
@@ -29,7 +36,7 @@ router.post("/addbook", upload.single("image"), async (req, res) => {
     mrp,
     price,
     quantity,
-    image,
+    imagename,
   });
   try {
     await newBook.save();
