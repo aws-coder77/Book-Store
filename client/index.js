@@ -1,3 +1,59 @@
+const searchInput = document.getElementById("searchInput");
+const suggestionsContainer = document.getElementById("suggestionsContainer");
+
+// Simulated list of suggestions (replace with your dynamic data)
+let suggestions = [];
+
+// Function to update suggestions based on user input
+function updateSuggestions(inputValue) {
+  suggestionsContainer.innerHTML = "";
+  const filteredSuggestions = suggestions.filter((suggestion) =>
+    suggestion.toLowerCase().includes(inputValue.toLowerCase())
+  );
+
+  filteredSuggestions.forEach((suggestion) => {
+    const suggestionItem = document.createElement("div");
+    suggestionItem.classList.add("suggestion");
+    suggestionItem.textContent = suggestion;
+
+    suggestionItem.addEventListener("click", () => {
+      searchInput.value = suggestion;
+      suggestionsContainer.innerHTML = "";
+    });
+
+    suggestionsContainer.appendChild(suggestionItem);
+  });
+}
+
+searchInput.addEventListener("input", async () => {
+  const inputValue = searchInput.value;
+
+  await fetch("/search", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ input: inputValue }),
+  })
+    .then((response) => response.json())
+    .then((suggestionItem) => {
+      suggestions = suggestionItem.map((suggestion) => suggestion.title);
+      console.log(suggestions);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+
+  updateSuggestions(inputValue);
+});
+
+// Close suggestions when clicking outside
+document.addEventListener("click", (event) => {
+  if (!event.target.closest(".suggestions-container")) {
+    suggestionsContainer.innerHTML = "";
+  }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   const cardImgTops = document.querySelectorAll(".card-img-top");
 
@@ -22,8 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (token != null) {
     loginButton.style.display = "none";
     signupButton.style.display = "none";
-  }
-  else {
+  } else {
     logoutButton.style.display = "none";
   }
 
@@ -36,5 +91,4 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error: ", error);
     }
   });
-
 });
