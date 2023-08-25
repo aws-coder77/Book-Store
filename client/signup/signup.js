@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const token = getCookie("token");
+  if(token != null){
+    window.location.href = "../index.html";
+  }
   const form = document.getElementById("signupForm");
 
   form.addEventListener("submit", async function (event) {

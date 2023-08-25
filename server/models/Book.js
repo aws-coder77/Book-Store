@@ -26,9 +26,8 @@ const BookSchema = new mongoose.Schema({
   quantity: {
     type: Number,
   },
-  image: {
-    data: Buffer, // Store binary image data
-    contentType: String, // MIME type of the image
+  imagename: {
+    type: String,
   },
   reviews: [
     {

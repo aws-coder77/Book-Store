@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const BookModel = require("./models/Book");
 
+
 const managerRouter = require("./routes/manage.js");
 const authRouter = require("./routes/auth.js");
 const searchRouter = require("./routes/search.js");
@@ -29,6 +30,7 @@ app.use(bodyParser.json());
 app.use("/manage", managerRouter);
 app.use("/api", authRouter);
 app.use("/search", searchRouter);
+app.use('/images', express.static('images'));
 
 app.get("/listbook", async (req, res) => {
   try {
