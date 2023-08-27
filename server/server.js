@@ -35,7 +35,7 @@ app.use('/images', express.static('images'));
 app.get("/listbook", async (req, res) => {
   try {
     const books = await BookModel.find({});
-    console.log(books);
+    // console.log(books);
     res.json(books);
   } catch (error) {
     console.error("Error:", error);

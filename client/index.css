@@ -151,3 +151,13 @@
     margin-bottom: 20px;
   }
 }
+
+.user_icon {
+  height: 19px;
+  width: 22px;
+  border-radius: 50%;
+}
+
+.body {
+  height: 100%;
+}

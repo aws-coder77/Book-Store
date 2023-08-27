@@ -3,7 +3,7 @@ const router = express.Router();
 const BookModel = require("../models/Book");
 router.post("/", async (req, res) => {
   const searchTerm = req.body.input;
-  console.log(req.body.input);
+  // console.log(req.body.input);
   try {
     const foundBooks = await BookModel.find({
       title: { $regex: searchTerm, $options: "i" },
