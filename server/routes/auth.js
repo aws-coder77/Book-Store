@@ -46,6 +46,23 @@ router.post("/cart", async (req, res) => {
   }
 });
 
+router.post("/cartids", async (req, res) => {
+  try {
+    const userID = req.body.userID;
+    const user = await UserModel.findOne({ _id: userID });
+    const cart = user.cart;
+    const books = [];
+    
+    for (const item of cart) {
+      books.push({bookid: item.bookid});
+    }
+    res.json(books);
+  } catch (err) {
+    console.error("Error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 router.post("/add", async (req, res) => {
   const userId = req.body.userID;
   const bookid = req.body.bookid;

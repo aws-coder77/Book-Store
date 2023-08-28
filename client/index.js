@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const signupButton = document.getElementById("btn-signup");
   const logoutButton = document.getElementById("btn-logout");
   const profileButton = document.getElementById("btn-profile");
-  
+
   const token = getCookie("token");
   console.log(token);
   if (token != null) {
@@ -93,6 +93,27 @@ document.addEventListener("DOMContentLoaded", async () => {
       console.error("Error: ", error);
     }
   });
+
+  const userID = getCookie("userID");
+  const cartBooks = [];
+  await fetch("/api/cartids", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ userID }),
+  })
+  .then((response) => response.json())
+  .then((cartids) => {
+    for(const id of cartids){
+      cartBooks.push(id.bookid);
+    }
+    // console.log(cartBooks);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+
   await fetch("/listbook", {
     method: "GET",
     headers: {
@@ -137,62 +158,69 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const buttonElement = document.createElement("button");
         buttonElement.className = "btn btn-outline-primary btn-sm";
-        buttonElement.textContent = "Add to Cart";
+        
+        let flag = false;
+        for(const id of cartBooks){
+          if(id == bookData._id){
+            flag = true;
+            break;
+          }
+        }
+        if(flag){
+          buttonElement.textContent = "Remove from Cart";
+        }
+        else{
+          buttonElement.textContent = "Add to Cart";
+        }
+        
         buttonElement.id = `${bookData._id}`;
 
         buttonElement.addEventListener("click", async (event) => {
           console.log(getCookie("userID"));
           const buttonId = event.target.id;
-          if(buttonElement.textContent == "Add to Cart"){
-            // console.log("butoon apna: " + buttonId);
-            // console.log("Button clicked for book with ID:", buttonId);
-            // console.log("Book Title:", bookData.title);
+          if (buttonElement.textContent == "Add to Cart") {
             await fetch("/api/add", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
-              body:JSON.stringify({
+              body: JSON.stringify({
                 userID: getCookie("userID"),
                 bookid: buttonId,
               })
             })
-            .then((response) => {
-              if (response.ok) {
-                // Handle successful response
-                buttonElement.textContent = "Added to Cart";
-              } else {
-                // Handle error response (e.g., response.status !== 200)
-                console.error("Error:", response.statusText);
-              }
-            })
-            .catch((error) => {
-              console.error("Fetch error:", error);
-            });
+              .then((response) => {
+                if (response.ok) {
+                  buttonElement.textContent = "Remove from Cart";
+                } else {
+                  console.error("Error:", response.statusText);
+                }
+              })
+              .catch((error) => {
+                console.error("Fetch error:", error);
+              });
           }
-          else{
+          else {
             await fetch("/api/remove", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
-              body:JSON.stringify({
+              body: JSON.stringify({
                 userID: getCookie("userID"),
                 bookid: buttonId,
               })
             })
-            .then((response) => {
-              if (response.ok) {
-                // Handle successful response
-                buttonElement.textContent = "Add to Cart";
-              } else {
-                // Handle error response (e.g., response.status !== 200)
-                console.error("Error:", response.statusText);
-              }
-            })
-            .catch((error) => {
-              console.error("Fetch error:", error);
-            });
+              .then((response) => {
+                if (response.ok) {
+                  buttonElement.textContent = "Add to Cart";
+                } else {
+                  console.error("Error:", response.statusText);
+                }
+              })
+              .catch((error) => {
+                console.error("Fetch error:", error);
+              });
           }
         });
 
@@ -220,3 +248,21 @@ const user_id = document.getElementById("user-icon");
 user_id.addEventListener('click', () => {
   window.location.href = "./user/userProfile.html";
 });
+
+
+function myFunction() {
+  console.log("my funciotn called");
+    let flag = getCookie("flag");
+    console.log(flag);
+    if (flag == "reload") {
+    
+        location.reload();
+        setCookie("flag", "dontreload");
+    }
+    else if(!flag){
+      location.reload();
+      setCookie("flag", "dontreload");
+    }
+}
+
+window.addEventListener('pageshow', myFunction);

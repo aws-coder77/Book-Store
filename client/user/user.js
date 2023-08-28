@@ -50,7 +50,35 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           const buttonElement = document.createElement("button");
           buttonElement.className = "btn btn-outline-primary btn-sm";
-          buttonElement.textContent = "Add to Cart";
+          buttonElement.textContent = "Remove from Cart";
+          buttonElement.id = `${bookData._id}`;
+
+          buttonElement.addEventListener("click", async (event) => {
+            const buttonId = event.target.id;
+            await fetch("/api/remove", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                userID: getCookie("userID"),
+                bookid: buttonId,
+              })
+            })
+              .then((response) => {
+                if (response.ok) {
+                  setCookie("flag", "reload");
+                  location.reload();
+                  // cardDiv = "";
+                } else {
+                  console.error("Error:", response.statusText);
+                }
+              })
+              .catch((error) => {
+                console.error("Fetch error:", error);
+              });
+
+          });
 
           cardBody.appendChild(titleElement);
           cardBody.appendChild(authorElement);
@@ -68,6 +96,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       })
       .catch((error) => {
         console.error("Error:", error);
+      });
+
+      const user_id = document.getElementById("user-icon");
+      user_id.addEventListener("click", () => {
+        window.location.href = "userProfile.html";
       });
   }
   const loginButton = document.getElementById("btn-login");
@@ -92,9 +125,4 @@ document.addEventListener("DOMContentLoaded", async () => {
       console.error("Error: ", error);
     }
   });
-});
-
-const user_id = document.getElementById("user-icon");
-user_id.addEventListener("click", () => {
-  window.location.href = "userProfile.html";
 });
