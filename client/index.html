@@ -43,7 +43,6 @@
                 Search
               </button>
             </form>
-            <div id="suggestion-container"></div>
           </li>
           <li class="nav-item" id="btn-login">
             <a class="nav-link" href="./login/login.html">Login</a>
@@ -54,83 +53,22 @@
           <li class="nav-item" id="btn-logout">
             <a class="nav-link" href="#">Log Out</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <img id="user-icon" src="../images/ic_user.png" class="user_icon">
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
 
     <div class="container">
-      <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3 card-img-top">
-          <div class="card mx-1 my-2 p-1 bg-light">
-            <img src="jeeBook.jpeg" alt="Card image cap" class="card-body" />
-            <div class="card-body">
-              <p class="m-0">Book Name</p>
-              <p class="m-0">Price</p>
-              <p class="m-0">Publication Year</p>
-              <p class="m-0">Author Name</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 card-img-top">
-          <div class="card mx-1 my-2 p-1 bg-light">
-            <img src="jeeBook.jpeg" alt="Card image cap" class="card-body" />
-            <div class="card-body">
-              <p class="m-0">Book Name</p>
-              <p class="m-0">Price</p>
-              <p class="m-0">Publication Year</p>
-              <p class="m-0">Author Name</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 card-img-top">
-          <div class="card mx-1 my-2 p-1 bg-light">
-            <img src="jeeBook.jpeg" alt="Card image cap" class="card-body" />
-            <div class="card-body">
-              <p class="m-0">Book Name</p>
-              <p class="m-0">Price</p>
-              <p class="m-0">Publication Year</p>
-              <p class="m-0">Author Name</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 card-img-top">
-          <div class="card mx-1 my-2 p-1 bg-light">
-            <img src="jeeBook.jpeg" alt="Card image cap" class="card-body" />
-            <div class="card-body">
-              <p class="m-0">Book Name</p>
-              <p class="m-0">Price</p>
-              <p class="m-0">Publication Year</p>
-              <p class="m-0">Author Name</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 card-img-top">
-          <div class="card mx-1 my-2 p-1 bg-light">
-            <img src="jeeBook.jpeg" alt="Card image cap" class="card-body" />
-            <div class="card-body">
-              <p class="m-0">Book Name</p>
-              <p class="m-0">Price</p>
-              <p class="m-0">Publication Year</p>
-              <p class="m-0">Author Name</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 card-img-top">
-          <div class="card mx-1 my-2 p-1 bg-light">
-            <img src="jeeBook.jpeg" alt="Card image cap" class="card-body" />
-            <div class="card-body">
-              <p class="m-0">Book Name</p>
-              <p class="m-0">Price</p>
-              <p class="m-0">Publication Year</p>
-              <p class="m-0">Author Name</p>
-            </div>
-          </div>
-        </div>
-        <!-- Repeat the above structure for other cards -->
+      <div class="row" id="bookListContainer">
+        
       </div>
     </div>
 
-    <footer class="footer mt-auto py-3 bg-dark">
+    <footer class="footer py-3 bg-dark">
       <div class="container d-flex justify-content-between">
         <span class="text-muted">about</span>
         <span class="text-muted">feecbook</span>
@@ -144,5 +82,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="cookie.js"></script>
+    <script src="./user/user.js"></script>
   </body>
 </html>

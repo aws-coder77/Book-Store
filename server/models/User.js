@@ -19,7 +19,18 @@ const UserSchema = new mongoose.Schema({
     },
     ismanager: {
         type: Boolean
-    }
+    },
+    cart: [
+        {
+            bookid: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "books",
+            },
+            sold: {
+                type: Boolean,
+            }
+        },
+    ]
 });
 
 const UserModel = mongoose.model("users", UserSchema);
