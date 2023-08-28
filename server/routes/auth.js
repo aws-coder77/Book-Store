@@ -46,6 +46,23 @@ router.post("/cart", async (req, res) => {
   }
 });
 
+router.post("/cartids", async (req, res) => {
+  try {
+    const userID = req.body.userID;
+    const user = await UserModel.findOne({ _id: userID });
+    const cart = user.cart;
+    const books = [];
+    
+    for (const item of cart) {
+      books.push({bookid: item.bookid});
+    }
+    res.json(books);
+  } catch (err) {
+    console.error("Error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 router.post("/add", async (req, res) => {
   const userId = req.body.userID;
   const bookid = req.body.bookid;
@@ -68,7 +85,7 @@ router.post("/remove", async (req, res) => {
       { _id: userId },
       { $pull: { cart: { bookid: bookid } } }
     );
-    console.log(`Book with ID ${bookid} removed from cart.`);
+    // console.log(`Book with ID ${bookid} removed from cart.`);
   } catch (error) {
     console.error('Error:', error);
   }
@@ -83,7 +100,7 @@ router.post("/userdata", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const { email, password } = req.body;
   try {
     const user = await UserModel.findOne({ email });
@@ -125,7 +142,7 @@ router.post("/signup", async (req, res) => {
   });
   try {
     const savedUser = await newUser.save();
-    console.log("User saved:", savedUser);
+    // console.log("User saved:", savedUser);
   } catch (error) {
     console.error("Error saving user:", error);
   }
