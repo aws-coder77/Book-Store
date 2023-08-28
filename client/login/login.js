@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const token = getCookie("token");
-  if(token != null){
+  if (token != null) {
     window.location.href = "../index.html";
   }
   const form = document.getElementById("loginform");

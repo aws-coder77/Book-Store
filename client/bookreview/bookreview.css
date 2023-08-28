@@ -1,5 +1,38 @@
-.carousel {
-  width: 90%;
+.book-card {
+  position: relative;
+}
+
+.book-card .reviews {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #dee2e6;
+  margin-top: 10px;
+}
+
+.book-card .review {
+  margin-bottom: 5px;
+}
+
+.review-toggle {
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .card-img-top {
+    max-width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .card-img-top {
+    max-width: 50%;
+  }
+}
+
+.user_icon {
+  height: 19px;
+  width: 22px;
+  border-radius: 50%;
+}
+
+.body {
   height: 100%;
-  margin: 10px;
 }
