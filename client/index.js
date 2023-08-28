@@ -38,7 +38,7 @@ searchInput.addEventListener("input", async () => {
     .then((response) => response.json())
     .then((suggestionItem) => {
       suggestions = suggestionItem.map((suggestion) => suggestion.title);
-      console.log(suggestions);
+      // console.log(suggestions);
     })
     .catch((error) => {
       console.error("Error:", error);
@@ -73,9 +73,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const signupButton = document.getElementById("btn-signup");
   const logoutButton = document.getElementById("btn-logout");
   const profileButton = document.getElementById("btn-profile");
-  
+
   const token = getCookie("token");
-  console.log(token);
+  // console.log(token);
   if (token != null) {
     loginButton.style.display = "none";
     signupButton.style.display = "none";
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         buttonElement.addEventListener("click", async (event) => {
           console.log(getCookie("userID"));
           const buttonId = event.target.id;
-          if(buttonElement.textContent == "Add to Cart"){
+          if (buttonElement.textContent == "Add to Cart") {
             // console.log("butoon apna: " + buttonId);
             // console.log("Button clicked for book with ID:", buttonId);
             // console.log("Book Title:", bookData.title);
@@ -152,47 +152,46 @@ document.addEventListener("DOMContentLoaded", async () => {
               headers: {
                 "Content-Type": "application/json",
               },
-              body:JSON.stringify({
+              body: JSON.stringify({
                 userID: getCookie("userID"),
                 bookid: buttonId,
+              }),
+            })
+              .then((response) => {
+                if (response.ok) {
+                  // Handle successful response
+                  buttonElement.textContent = "Added to Cart";
+                } else {
+                  // Handle error response (e.g., response.status !== 200)
+                  console.error("Error:", response.statusText);
+                }
               })
-            })
-            .then((response) => {
-              if (response.ok) {
-                // Handle successful response
-                buttonElement.textContent = "Added to Cart";
-              } else {
-                // Handle error response (e.g., response.status !== 200)
-                console.error("Error:", response.statusText);
-              }
-            })
-            .catch((error) => {
-              console.error("Fetch error:", error);
-            });
-          }
-          else{
+              .catch((error) => {
+                console.error("Fetch error:", error);
+              });
+          } else {
             await fetch("/api/remove", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
-              body:JSON.stringify({
+              body: JSON.stringify({
                 userID: getCookie("userID"),
                 bookid: buttonId,
+              }),
+            })
+              .then((response) => {
+                if (response.ok) {
+                  // Handle successful response
+                  buttonElement.textContent = "Add to Cart";
+                } else {
+                  // Handle error response (e.g., response.status !== 200)
+                  console.error("Error:", response.statusText);
+                }
               })
-            })
-            .then((response) => {
-              if (response.ok) {
-                // Handle successful response
-                buttonElement.textContent = "Add to Cart";
-              } else {
-                // Handle error response (e.g., response.status !== 200)
-                console.error("Error:", response.statusText);
-              }
-            })
-            .catch((error) => {
-              console.error("Fetch error:", error);
-            });
+              .catch((error) => {
+                console.error("Fetch error:", error);
+              });
           }
         });
 
@@ -209,14 +208,176 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         bookListContainer.appendChild(cardDiv);
       }
-
     })
     .catch((error) => {
       console.error("Error:", error);
     });
+
+  // searchbarInput
+
+  document
+    .getElementById("searchForm")
+    .addEventListener("submit", async (event) => {
+      event.preventDefault(); // Prevent the form from submitting traditionally
+
+      const searchInput = document.getElementById("searchInput");
+      const inputValue = searchInput.value; // Get the input value
+
+      await fetch("/search/books", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ input: inputValue }),
+      })
+        .then((response) => response.json())
+        .then((bookList) => {
+          const bookListContainer =
+            document.getElementById("bookListContainer");
+          bookListContainer.innerHTML = " ";
+          if (bookList.length !== 0) {
+            for (const bookData of bookList) {
+              const cardDiv = document.createElement("div");
+              cardDiv.className = "col-sm-6 col-md-4 col-lg-3 card-img-top";
+
+              const card = document.createElement("div");
+              card.className = "card mx-1 my-1 p-1 bg-light";
+
+              const imageElement = document.createElement("img");
+              imageElement.src =
+                "http://localhost:3000/images/" + bookData.imagename;
+              imageElement.alt = "Card image cap";
+              imageElement.className = "card-body";
+
+              const cardBody = document.createElement("div");
+              cardBody.className = "card-body";
+
+              const titleElement = document.createElement("h5");
+              titleElement.className = "card-title mb-1";
+              titleElement.textContent = bookData.title;
+
+              const authorElement = document.createElement("p");
+              authorElement.className = "card-text text-muted mb-1";
+              authorElement.textContent = bookData.author;
+
+              const publicationYearElement = document.createElement("p");
+              publicationYearElement.className = "card-text text-muted mb-2";
+              publicationYearElement.textContent = `Publication : ${bookData.publisher}`;
+
+              const priceElement = document.createElement("h6");
+              priceElement.className = "card-subtitle mb-2 text-primary";
+              priceElement.textContent = `$ ${bookData.price}`;
+
+              const buttonElement = document.createElement("button");
+              buttonElement.className = "btn btn-outline-primary btn-sm";
+              buttonElement.textContent = "Add to Cart";
+              buttonElement.id = `${bookData._id}`;
+
+              buttonElement.addEventListener("click", async (event) => {
+                console.log(getCookie("userID"));
+                const buttonId = event.target.id;
+                if (buttonElement.textContent == "Add to Cart") {
+                  // console.log("butoon apna: " + buttonId);
+                  // console.log("Button clicked for book with ID:", buttonId);
+                  // console.log("Book Title:", bookData.title);
+                  await fetch("/api/add", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      userID: getCookie("userID"),
+                      bookid: buttonId,
+                    }),
+                  })
+                    .then((response) => {
+                      if (response.ok) {
+                        // Handle successful response
+                        buttonElement.textContent = "Added to Cart";
+                      } else {
+                        // Handle error response (e.g., response.status !== 200)
+                        console.error("Error:", response.statusText);
+                      }
+                    })
+                    .catch((error) => {
+                      console.error("Fetch error:", error);
+                    });
+                } else {
+                  await fetch("/api/remove", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      userID: getCookie("userID"),
+                      bookid: buttonId,
+                    }),
+                  })
+                    .then((response) => {
+                      if (response.ok) {
+                        // Handle successful response
+                        buttonElement.textContent = "Add to Cart";
+                      } else {
+                        // Handle error response (e.g., response.status !== 200)
+                        console.error("Error:", response.statusText);
+                      }
+                    })
+                    .catch((error) => {
+                      console.error("Fetch error:", error);
+                    });
+                }
+              });
+
+              cardBody.appendChild(titleElement);
+              cardBody.appendChild(authorElement);
+              cardBody.appendChild(publicationYearElement);
+              cardBody.appendChild(priceElement);
+              cardBody.appendChild(buttonElement);
+
+              card.appendChild(imageElement);
+              card.appendChild(cardBody);
+
+              cardDiv.appendChild(card);
+
+              bookListContainer.appendChild(cardDiv);
+            }
+          } else {
+            const card = document.createElement("div");
+            card.classList.add("card");
+
+            // Create the card body
+            const cardBody = document.createElement("div");
+            cardBody.classList.add("card-body");
+
+            // Create card title
+            const cardTitle = document.createElement("h5");
+            cardTitle.classList.add("card-title");
+            cardTitle.textContent = "Book Not Found";
+
+            // Create card text
+            const cardText = document.createElement("p");
+            cardText.classList.add("card-text");
+            cardText.textContent =
+              "Sorry, the book you're looking for could not be found.";
+
+            // Append card title and text to the card body
+            cardBody.appendChild(cardTitle);
+            cardBody.appendChild(cardText);
+
+            // Append card body to the card
+            card.appendChild(cardBody);
+
+            // Append the card to the bookListContainer
+            bookListContainer.appendChild(card);
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    });
 });
 
 const user_id = document.getElementById("user-icon");
-user_id.addEventListener('click', () => {
+user_id.addEventListener("click", () => {
   window.location.href = "./user/userProfile.html";
 });

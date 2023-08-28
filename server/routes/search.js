@@ -16,6 +16,21 @@ router.post("/", async (req, res) => {
       .json({ error: "An error occurred while searching for books." });
   }
 });
+router.post("/books", async (req, res) => {
+  const searchTerm = req.body.input;
 
+  try {
+    const foundBooks = await BookModel.find({
+      title: { $regex: searchTerm, $options: "i" },
+    });
+
+    res.json(foundBooks);
+  } catch (error) {
+    console.error("Error:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while searching for books." });
+  }
+});
 
 module.exports = router;
