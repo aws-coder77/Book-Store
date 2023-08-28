@@ -9,7 +9,6 @@
   }
 }
 
-
 .suggestions-container {
   position: absolute;
   width: 20%; /* Set the suggestion container width to 100% */
@@ -160,4 +159,13 @@
 
 .body {
   height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* This ensures the page takes at least the full viewport height */
+}
+
+.container {
+  flex: 1; /* This makes the container grow to take the available space */
 }

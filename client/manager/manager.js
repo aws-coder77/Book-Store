@@ -157,8 +157,8 @@ function getStatsComp() {
 
 const contentDiv = document.getElementById("main-content");
 const addBookDiv = document.getElementById("add_book");
-const addStaffDiv = document.getElementById("add_staff");
-const statsDiv = document.getElementById("stats");
+// const addStaffDiv = document.getElementById("add_staff");
+// const statsDiv = document.getElementById("stats");
 const logoutButton = document.getElementById("logout");
 
 addBookDiv.addEventListener("click", function (event) {
@@ -194,16 +194,16 @@ addBookDiv.addEventListener("click", function (event) {
   });
 });
 
-addStaffDiv.addEventListener("click", function (event) {
-  event.preventDefault();
-  contentDiv.innerHTML = getStaffComp();
-});
+// addStaffDiv.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   contentDiv.innerHTML = getStaffComp();
+// });
 
-statsDiv.addEventListener("click", function (event) {
-  event.preventDefault();
-  contentDiv.innerHTML = getStatsComp();
-  drawChart();
-});
+// statsDiv.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   contentDiv.innerHTML = getStatsComp();
+//   drawChart();
+// });
 
 logoutButton.addEventListener("click", function (event) {
   event.preventDefault();

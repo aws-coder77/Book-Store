@@ -108,7 +108,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const logoutButton = document.getElementById("btn-logout");
 
   const token = getCookie("token");
-  console.log(token);
   if (token != null) {
     loginButton.style.display = "none";
     signupButton.style.display = "none";

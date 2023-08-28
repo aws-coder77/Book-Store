@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
       email: email,
       password: hashedPassword,
     };
-    console.log(formData);
+    // console.log(formData);
     await fetch("http://localhost:3000/api/login", {
       method: "POST",
       headers: {
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         setCookie("token", data.token);
         setCookie("userID", data.userID);
-        console.log("Response from server:", data);
+        // console.log("Response from server:", data);
         if (data.token){
           if(data.ismanager) window.location.href = "../manager/manager.html";
           else window.location.href = "../index.html";
