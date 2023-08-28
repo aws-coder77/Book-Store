@@ -40,7 +40,7 @@ router.post("/addbook", upload.single("image"), async (req, res) => {
   });
   try {
     await newBook.save();
-    return res.json({ status: 100, message: "Book added successfully" });
+    return res.status(200).json({ status: 100, message: "Book added successfully" });
   } catch (err) {
     return res.json({ message: "Something went wrong" });
   }
