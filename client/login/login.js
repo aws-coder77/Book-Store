@@ -35,7 +35,10 @@ document.addEventListener("DOMContentLoaded", function () {
         setCookie("token", data.token);
         setCookie("userID", data.userID);
         console.log("Response from server:", data);
-        if (data.token) window.location.href = "../index.html";
+        if (data.token){
+          if(data.ismanager) window.location.href = "../manager/manager.html";
+          else window.location.href = "../index.html";
+        }
         else alert("Wrong Email or Password");
       })
       .catch((error) => {

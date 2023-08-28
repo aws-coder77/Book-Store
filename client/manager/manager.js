@@ -34,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   linkColor.forEach((l) => l.addEventListener("click", colorLink));
 
   // Your code to run since DOM is loaded and ready
+
+
 });
 
 google.charts.load("current", { packages: ["corechart"] });
@@ -76,35 +78,35 @@ function getBookComp() {
         <div class="height-100 bg-light">
             <h4>Add Book</h4>
             <div class="container-add">
-                <form id="addbookform" enctype="multipart/form-data" action="/manage/addbook" method= "POST" >
+                <form id="addbookform" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">Book Title</label>
-                        <input type="text" class="form-control" name="title" id="title" placeholder="Book Title">
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Book Title" required>
                     </div>
                     <div class="form-group">
                         <label for="author">Author</label>
-                        <input type="text" class="form-control" name="author" id="author" placeholder="Author">
+                        <input type="text" class="form-control" name="author" id="author" placeholder="Author" required>
                     </div>
                     <div class="form-group">
                         <label for="pub">Publication</label>
-                        <input type="text" class="form-control" name="publisher" id="publisher" placeholder="Publication">
+                        <input type="text" class="form-control" name="publisher" id="publisher" placeholder="Publication" required>
                     </div>
                     <div class="form-group">
                         <label for="mrp">MRP</label>
-                        <input type="number" class="form-control" name="mrp" id="mrp" placeholder="MRP">
+                        <input type="number" class="form-control" name="mrp" id="mrp" placeholder="MRP" required>
                     </div>
                     <div class="form-group">
                         <label for="price">Price</label>
-                        <input type="number" class="form-control" name="price" id="price" placeholder="Price">
+                        <input type="number" class="form-control" name="price" id="price" placeholder="Price" required>
                     </div>
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
-                        <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Quantity">
+                        <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Quantity" required>
                     </div>
-                    <input type="file" name="image" accept="image/*" id ="idimage">
+                    <input type="file" name="image" accept="image/*" id ="idimage" required>
 
                     <div class="form-group divcenter">
-                        <button class="btn btn-primary btn-submit" type = "submit"> submit</button>
+                        <button class="btn btn-primary btn-submit" type="submit">Submit</button>
                     </div>
                 </form>
             </div>
@@ -157,10 +159,39 @@ const contentDiv = document.getElementById("main-content");
 const addBookDiv = document.getElementById("add_book");
 const addStaffDiv = document.getElementById("add_staff");
 const statsDiv = document.getElementById("stats");
+const logoutButton = document.getElementById("logout");
 
 addBookDiv.addEventListener("click", function (event) {
   event.preventDefault();
   contentDiv.innerHTML = getBookComp();
+  var form = document.getElementById("addbookform");
+// Add a submit event listener to the form
+  form.addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+
+      // Create a FormData object to collect form data
+      var formData = new FormData(form);
+
+      // Send a fetch request to the server
+      fetch("/manage/addbook", {
+          method: "POST",
+          body: formData
+      })
+      .then(response => {
+        if(response.status === 200) return response.json();
+        else console.error("Error: " + response.status);
+      }) // Assuming the response is JSON
+      .then(data => {
+          // You can now access the response data in the 'data' variable
+          console.log(data);
+          alert("Book added successfully");
+          window.location.href = "./manager.html";
+          // Here, you can write code to handle the response data as needed
+      })
+      .catch(error => {
+          console.error("Error:", error);
+      });
+  });
 });
 
 addStaffDiv.addEventListener("click", function (event) {
@@ -172,4 +203,15 @@ statsDiv.addEventListener("click", function (event) {
   event.preventDefault();
   contentDiv.innerHTML = getStatsComp();
   drawChart();
+});
+
+logoutButton.addEventListener("click", function (event) {
+  event.preventDefault();
+  try {
+    deleteCookie("token");
+    deleteCookie("userID");
+    window.location.href = "../index.html";
+  } catch (error) {
+    console.error("Error: ", error);
+  }
 });

@@ -72,7 +72,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const loginButton = document.getElementById("btn-login");
   const signupButton = document.getElementById("btn-signup");
   const logoutButton = document.getElementById("btn-logout");
-
+  const profileButton = document.getElementById("btn-profile");
+  
   const token = getCookie("token");
   console.log(token);
   if (token != null) {
@@ -80,6 +81,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     signupButton.style.display = "none";
   } else {
     logoutButton.style.display = "none";
+    profileButton.style.display = "none";
   }
 
   logoutButton.addEventListener("click", async () => {

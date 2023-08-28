@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => response.json())
         .then((data) => {
           console.log("Response from server:", data);
+          window.location.href = "../login/login.html";
         })
         .catch((error) => {
           console.error("Error sending data to server:", error);

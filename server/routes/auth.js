@@ -99,7 +99,7 @@ router.post("/login", async (req, res) => {
       const token = jwt.sign({ id: user._id }, "mysecretkey");
       return res
         .status(200)
-        .json({ token, userID: user._id });
+        .json({ token, userID: user._id, ismanager: user.ismanager });
     } else {
       // console.log(req.body);
       return res
@@ -121,6 +121,7 @@ router.post("/signup", async (req, res) => {
     email: email,
     phone: phone,
     password: password,
+    ismanager: false
   });
   try {
     const savedUser = await newUser.save();
