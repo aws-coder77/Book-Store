@@ -1,153 +1,162 @@
 @media (max-width: 768px) {
-    .card-img-top {
-      max-width: 50%;
-    }
+  .card-img-top {
+    max-width: 50%;
   }
-  @media (max-width: 768px) {
-    .card-img-top {
-      max-width: 50%;
-    }
+}
+@media (max-width: 768px) {
+  .card-img-top {
+    max-width: 50%;
   }
-  
-  /* Suggestions container styles */
-  .suggestions-container {
-    position: absolute;
-    width: 20%; /* Set the suggestion container width to 100% */
-    background-color: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    max-height: 300px;
-    overflow-y: auto;
-    z-index: 1000;
-    top: calc(
-      100% + 5px
-    ); /* Position the suggestion container below the search bar */
+}
+
+/* Suggestions container styles */
+.suggestions-container {
+  position: absolute;
+  width: 20%; /* Set the suggestion container width to 100% */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  top: calc(
+    100% + 5px
+  ); /* Position the suggestion container below the search bar */
+}
+
+.suggestion {
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex; /* Display suggestions as flex for better alignment */
+  align-items: center;
+}
+
+.suggestion img {
+  max-width: 50px;
+  max-height: 50px;
+  margin-right: 10px;
+}
+
+.suggestion-details {
+  flex: 1; /* Expand suggestion details to fill available space */
+}
+
+.suggestion-title {
+  font-weight: bold;
+}
+
+.suggestion-description {
+  color: #666;
+  font-size: 14px;
+}
+
+.suggestion-category {
+  color: #999;
+  font-size: 12px;
+}
+
+.suggestion {
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.suggestion:hover {
+  background-color: #f0f0f0; /* Change background color on hover */
+}
+
+.suggestion img {
+  max-width: 50px;
+  max-height: 50px;
+  margin-right: 10px;
+}
+
+.suggestion-details {
+  flex: 1;
+}
+
+.suggestion-title {
+  font-weight: bold;
+}
+
+.suggestion-description {
+  color: #666;
+  font-size: 14px;
+}
+
+.suggestion-category {
+  color: #999;
+  font-size: 12px;
+}
+
+/* Improve styling for the card */
+.card {
+  border: none; /* Remove the border */
+  border-radius: 8px; /* Add border radius */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle box shadow */
+  transition: transform 0.3s ease-in-out; /* Add smooth transform transition */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Add a slight lift effect on hover */
+}
+
+/* Style the image */
+.card-img-top img {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* Align the card content */
+.card-body {
+  padding: 10px;
+}
+
+/* Style the book information */
+.card-body p {
+  margin: 5px 0;
+}
+
+/* Ensure consistent font size and weight */
+.card-body p {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* Style the author's name to stand out */
+.card-body p:last-child {
+  font-weight: 600;
+}
+
+/* Adjust the margins for different screen sizes */
+@media (max-width: 576px) {
+  .col-sm-6 {
+    margin-bottom: 20px;
   }
-  
-  .suggestion {
-    padding: 12px 20px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    display: flex; /* Display suggestions as flex for better alignment */
-    align-items: center;
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .col-md-4 {
+    margin-bottom: 20px;
   }
-  
-  .suggestion img {
-    max-width: 50px;
-    max-height: 50px;
-    margin-right: 10px;
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .col-lg-3 {
+    margin-bottom: 20px;
   }
-  
-  .suggestion-details {
-    flex: 1; /* Expand suggestion details to fill available space */
-  }
-  
-  .suggestion-title {
-    font-weight: bold;
-  }
-  
-  .suggestion-description {
-    color: #666;
-    font-size: 14px;
-  }
-  
-  .suggestion-category {
-    color: #999;
-    font-size: 12px;
-  }
-  
-  .suggestion {
-    padding: 12px 20px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    display: flex;
-    align-items: center;
-  }
-  
-  .suggestion:hover {
-    background-color: #f0f0f0; /* Change background color on hover */
-  }
-  
-  .suggestion img {
-    max-width: 50px;
-    max-height: 50px;
-    margin-right: 10px;
-  }
-  
-  .suggestion-details {
-    flex: 1;
-  }
-  
-  .suggestion-title {
-    font-weight: bold;
-  }
-  
-  .suggestion-description {
-    color: #666;
-    font-size: 14px;
-  }
-  
-  .suggestion-category {
-    color: #999;
-    font-size: 12px;
-  }
-  
-  /* Improve styling for the card */
-  .card {
-    border: none; /* Remove the border */
-    border-radius: 8px; /* Add border radius */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle box shadow */
-    transition: transform 0.3s ease-in-out; /* Add smooth transform transition */
-  }
-  
-  .card:hover {
-    transform: translateY(-5px); /* Add a slight lift effect on hover */
-  }
-  
-  /* Style the image */
-  .card-img-top img {
-    width: 100%;
-    height: auto;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-  }
-  
-  /* Align the card content */
-  .card-body {
-    padding: 10px;
-  }
-  
-  /* Style the book information */
-  .card-body p {
-    margin: 5px 0;
-  }
-  
-  /* Ensure consistent font size and weight */
-  .card-body p {
-    font-size: 14px;
-    font-weight: 400;
-  }
-  
-  /* Style the author's name to stand out */
-  .card-body p:last-child {
-    font-weight: 600;
-  }
-  
-  /* Adjust the margins for different screen sizes */
-  @media (max-width: 576px) {
-    .col-sm-6 {
-      margin-bottom: 20px;
-    }
-  }
-  
-  @media (min-width: 577px) and (max-width: 768px) {
-    .col-md-4 {
-      margin-bottom: 20px;
-    }
-  }
-  
-  @media (min-width: 769px) and (max-width: 992px) {
-    .col-lg-3 {
-      margin-bottom: 20px;
-    }
-  }
+}
+.user_icon {
+  height: 19px;
+  width: 22px;
+  border-radius: 50%;
+}
+
+.body {
+  height: 100%;
+}
