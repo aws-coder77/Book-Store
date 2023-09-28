@@ -31,7 +31,7 @@ router.post("/cart", async (req, res) => {
             imagename: book.imagename,
             sold: item.sold,
           };
-          console.log(bookData);
+          // console.log(bookData);
           books.push(bookData);
         }
       } catch (error) {
@@ -66,7 +66,8 @@ router.post("/cartids", async (req, res) => {
 router.post("/add", async (req, res) => {
   const userId = req.body.userID;
   const bookid = req.body.bookid;
-  console.log(userId + " " + bookid);
+  // console.log(userId + "
+  
   const user = await UserModel.findById(userId);
   user.cart.push({bookid, sold: false});
   await user.save();
